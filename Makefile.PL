@@ -1,8 +1,9 @@
 use inc::Module::Install;
 name 'Data-Container';
 all_from 'lib/Data/Container.pm';
+perl_version '5.006';
 
-requires 'Class::MethodMaker';
+requires 'Class::Accessor::Complex';
 requires 'Data::Miscellany';
 
 build_requires 'Test::More';

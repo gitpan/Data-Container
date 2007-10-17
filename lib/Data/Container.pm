@@ -6,10 +6,15 @@ package Data::Container;
 
 use strict;
 use warnings;
+use Carp;
 use Data::Miscellany 'set_push';
+use NEXT;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
+
+
+use base 'Class::Accessor::Complex';
 
 
 use overload
@@ -17,13 +22,13 @@ use overload
     cmp  => sub { "$_[0]" cmp "$_[1]" };
 
 
-use Class::MethodMaker
-    [ new   => [ qw/-hash new/ ],
-      array => 'items',
-    ];
+Data::Container
+    ->mk_new
+    ->mk_array_accessors('items');
 
 
 sub stringify { join "\n\n" => map { "$_" } $_[0]->items }
+
 
 
 sub items_set_push {
@@ -38,6 +43,7 @@ sub items_set_push {
 
 sub prepare_comparable {
     my $self = shift;
+    $self->NEXT::prepare_comparable(@_);
     $self->items;     # autovivify
 }
 
@@ -87,20 +93,10 @@ component is initialized by calling the method of the same name with the given
 value. 
 
 =item items
-=item items_clear
-=item items_count
-=item items_index
-=item items_isset
-=item items_pop
-=item items_push
-=item items_reset
-=item items_set
-=item items_shift
-=item items_splice
-=item items_unshift
 
-An array accessor. See L<Class::Method::array> for details on related methods
-provided. C<items()> is used to access the items contained in the container.
+An array accessor. See L<Class::Accessor::Complex->mk_array_accessors()> for
+details on related methods provided. C<items()> is used to access the items
+contained in the container.
 
 =item items_set_push
 

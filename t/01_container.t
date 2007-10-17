@@ -2,7 +2,7 @@
 
 use warnings;
 use strict;
-use Test::More tests => 13;
+use Test::More tests => 14;
 
 package My::Item;
 
@@ -67,3 +67,7 @@ $c2->items_set_push($c1);
 is($c2->items_count, 7, "new item count after set_push of the first container");
 is("$c2", "ccc\n\nddd\n\neee\n\nfff\n\nkkk\n\nmmm\n\nggg",
     "stringified container");
+
+$c1->items_clear;
+is($c1->items_count, 0, 'empty container');
+
