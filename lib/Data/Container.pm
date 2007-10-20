@@ -11,7 +11,7 @@ use Data::Miscellany 'set_push';
 use NEXT;
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 use base 'Class::Accessor::Complex';
@@ -22,7 +22,7 @@ use overload
     cmp  => sub { "$_[0]" cmp "$_[1]" };
 
 
-Data::Container
+__PACKAGE__
     ->mk_new
     ->mk_array_accessors('items');
 

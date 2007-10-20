@@ -1,5 +1,8 @@
 Revision history for Perl extension Data::Container.
 
+0.04  Sa Okt 20 22:20:15 CEST 2007
+        - simplified accessor declaration
+
 0.03  Do Okt 18 10:09:39 CEST 2007
         - fixed version requirement of Test::More
 

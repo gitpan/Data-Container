@@ -21,4 +21,4 @@ requires:
   Data::Miscellany: 0
   NEXT: 0
   perl: 5.6.0
-version: 0.03
+version: 0.04
